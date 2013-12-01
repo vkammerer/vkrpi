@@ -1,0 +1,32 @@
+.scrollable{
+	overflow: auto;
+	-webkit-transition-property: top, bottom;
+	transition-property: top, bottom;
+	-webkit-transition-duration: .2s, .2s;
+	transition-duration: .2s, .2s;
+	-webkit-transition-timing-function: linear, linear;
+	transition-timing-function: linear, linear;
+	-webkit-overflow-scrolling: touch;
+}
+.centeredH4 {
+	margin-top:1.5em;
+	text-align:center;
+	position:relative;
+	&:before {
+		height:1px;
+		background:#333;
+		display:block;
+		top:50%;
+		position:absolute;
+		right:0;
+		left:0;
+		content:''
+	}
+	> span {
+		position:relative;
+		background:white;
+		display:inline-block;
+		padding:0 5px;
+	}
+
+}

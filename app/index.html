@@ -1,0 +1,131 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+    <link rel="shortcut icon" sizes="196x196" href="/icon-196x196.png">
+    <link rel="stylesheet" href="styles/inline.css?__inline=true">        
+
+</head>
+  <body ng-app="vksetupApp">
+
+    <!--[if lt IE 9]>
+      <script src="bower_components/es5-shim/es5-shim.js"></script>
+      <script src="bower_components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+
+    <div id="siteloader">
+        <div class="spinnerContainer" ng-show="spinner">
+            <div>
+                <div class="spinner">
+                <div class="ui-spinner">
+                    <span class="side side-left">
+                        <span class="fill"></span>
+                    </span>     
+                    <span class="side side-right">
+                        <span class="fill"></span>
+                    </span>
+                </div>
+            </div>
+                <div class="spinnerContent">Loading</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add your site or application content here -->
+    <div ng-if="state.isMobile">
+      <layoutmobile></layoutmobile>
+    </div>
+    <div ng-if="!state.isMobile">
+      <layoutdesktop></layoutdesktop>
+    </div>
+
+    <noscript>
+        <!-- build:css(.tmp) styles/main.css -->
+        <link rel="stylesheet" href="styles/main.css">
+        <!-- endbuild -->
+    </noscript>
+    <script type="text/javascript">
+        (function(){
+            var thisCssTagContent = document.getElementsByTagName("noscript")[0].innerHTML;
+            var thisHrefBeginning = thisCssTagContent.indexOf('href="styles/') + 6;
+            var thisHrefEnd = thisCssTagContent.indexOf('main.css"') + 8;
+            var thisHref = thisCssTagContent.substring(thisHrefBeginning, thisHrefEnd);
+            var stylesheet = document.createElement('link');
+            stylesheet.href = thisHref;
+            stylesheet.rel = 'stylesheet';
+            stylesheet.type = 'text/css';
+            document.getElementsByTagName('head')[0].appendChild(stylesheet);
+        })()
+    </script>
+
+    <!-- build:js scripts/plugins.js -->
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/snapjs/snap.min.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js scripts/socket.io.js -->
+    <script src="bower_components/socket.io-client/dist/socket.io.min.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js scripts/modules.js -->
+    <script src="bower_components/angular-resource/angular-resource.min.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="bower_components/angular-route/angular-route.min.js"></script>
+    <script src="bower_components/angular-gestures/gestures.min.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="bower_components/angular-ui-bootstrap/dist/ui-bootstrap-tpls-0.7.0.min.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+
+    <script src="scripts/services/utils.js"></script>
+    <script src="scripts/services/connection.js"></script>
+    <script src="scripts/services/state.js"></script>
+    <script src="scripts/services/initialisation.js"></script>
+    <script src="scripts/services/user.js"></script>
+    <script src="scripts/services/constants.js"></script>
+    <script src="scripts/services/architecture.js"></script>
+
+    <script src="scripts/directives/layout/mobile.js"></script>
+    <script src="scripts/directives/layout/desktop.js"></script>
+    <script src="scripts/directives/navigation/mobile.js"></script>
+    <script src="scripts/directives/navigation/vkheader.js"></script>
+    <script src="scripts/directives/navigation/desktop.js"></script>
+    <script src="scripts/directives/spinner.js"></script>
+    <script src="scripts/directives/alerts.js"></script>
+    <script src="scripts/directives/breadcrumb.js"></script>
+    <script src="scripts/directives/social.js"></script>
+
+    <script src="scripts/controllers/home.js"></script>
+    <script src="scripts/controllers/user/signin.js"></script>
+    <script src="scripts/controllers/user/signup.js"></script>
+    <script src="scripts/controllers/user/edit.js"></script>
+
+    <script src="scripts/routes/rpi.js"></script>
+    <script src="scripts/services/rpi.js"></script>
+    <script src="scripts/controllers/rpi/all.js"></script>
+    <script src="scripts/controllers/rpi/create.js"></script>
+    <script src="scripts/controllers/rpi/show.js"></script>
+    <script src="scripts/controllers/rpi/edit.js"></script>
+
+    <script src="scripts/routes/gpio.js"></script>
+    <script src="scripts/services/gpio.js"></script>
+    <script src="scripts/controllers/gpio/all.js"></script>
+    <script src="scripts/controllers/gpio/create.js"></script>
+    <script src="scripts/controllers/gpio/show.js"></script>
+    <script src="scripts/controllers/gpio/edit.js"></script>
+
+    <!-- endbuild -->
+</body>
+</html>

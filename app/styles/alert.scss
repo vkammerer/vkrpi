@@ -1,0 +1,39 @@
+@import "sass-bootstrap/lib/variables";
+
+.alertcontainer {
+}
+.alertcontainer.extended {
+}
+
+.alertcontainer,
+.alertcontainer.extended,
+.animate-vkalert.ng-enter,
+.animate-vkalert.ng-leave,
+.animate-vkalert.ng-move {
+	-webkit-transition:all linear 300ms;
+	-moz-transition:all linear 300ms;
+	-o-transition:all linear 300ms;
+	transition:all linear 300ms;
+}
+
+.animate-vkalert {
+	margin-top: 15px;
+}
+.animate-vkalert.ng-enter, .animate-vkalert.ng-leave.ng-leave-active {
+	opacity:0;
+}
+.animate-vkalert, .animate-vkalert.ng-enter.ng-enter-active, .animate-vkalert.ng-leave {
+	opacity:1;
+}
+@media (min-width: $screen-sm) {
+	.animate-vkalert.ng-enter, .animate-vkalert.ng-leave.ng-leave-active {
+		line-height:0;
+		padding: 0 15px;
+		margin-top: 0;
+	}
+	.animate-vkalert, .animate-vkalert.ng-enter.ng-enter-active, .animate-vkalert.ng-leave {
+		margin-top: 15px;
+		line-height:1.42857;
+		padding: 15px;
+	}
+}

@@ -1,0 +1,30 @@
+<h2>Home</h2>
+<div ng-show="!user" class="row">
+	<div class="col-xs-12">
+		<p>DC lets you control connected devices from the web.</p>
+	</div>
+	<div class="col-xs-12 col-sm-6">
+		<a class="btn btn-primary btn-lg btn-block" hm-tap="utils.locationPath('user/signin')" >Sign in</a>
+	</div>
+	<div class="col-xs-12 col-sm-6">
+		<a class="btn btn-default btn-lg btn-block" hm-tap="utils.locationPath('user/signup')" >Sign up</a>
+	</div>
+</div>
+<div ng-show="user">
+	<div class="row">
+		<div class="col-xs-12">
+			<a ng-show="!utils.isUserConnected(user)" type="submit" class="btn btn-success btn-lg btn-block" ng-click="connectServer(user)">Connect to Server</a>
+		</div>
+		<div class="col-xs-12">
+			<a ng-show="utils.isUserConnected(user)" type="submit" class="btn btn-danger btn-lg btn-block" ng-click="disConnectServer(user)">Disconnect from Server</a>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 col-sm-6">
+			<a class="btn btn-primary btn-lg btn-block" hm-tap="utils.locationPath('rpis')" >Devices</a>
+		</div>
+		<div class="col-xs-12 col-sm-6">
+			<a class="btn btn-primary btn-lg btn-block" hm-tap="utils.locationPath('gpios')" >Pins</a>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,51 @@
+<div ng-show="(user._id === gpio.rpi.user)" class="articleOptions clearfix">
+	<div style="padding-bottom:10px;">
+	<div hm-tap="utils.locationPath('gpio/' + gpio._id + '/edit')" class="btn btn-default">
+			<span class="glyphicon glyphicon-cog"></span>
+		</div>
+		<div hm-tap="deleteGpio(gpio)" class="btn btn-default">
+			<span class="glyphicon glyphicon-remove"></span>
+		</div>
+	</div>
+	<div ng-show="gpio.rpi.mode == 'client'">
+		<a ng-show="!utils.isUserConnected(user)" hm-tap="utils.locationPath('')">
+			<span class="glyphicon glyphicon-ban-circle"></span>
+			Not connected to server
+		</a>
+		<a ng-show="utils.isUserConnected(user)" hm-tap="utils.locationPath('')">
+			<span class="glyphicon glyphicon-transfer"></span>
+			Connected to server
+		</a>
+	</div>
+	<div ng-show="gpio.rpi.mode == 'server'">
+		<a ng-show="!utils.isRpiConnected(gpio.rpi)" hm-tap="utils.locationPath('rpi/' + gpio.rpi._id + '/show')">
+			<span class="glyphicon glyphicon-ban-circle"></span>
+			Not connected to device
+		</a>
+		<a ng-show="utils.isRpiConnected(gpio.rpi)" hm-tap="utils.locationPath('rpi/' + gpio.rpi._id + '/show')">
+			<span class="glyphicon glyphicon-transfer"></span>
+			Connected to device
+		</a>
+	</div>
+</div>
+<h2 ng-bind="gpio.name">Pin</h2>
+<p>
+	<strong ng-bind="gpio.rpi.name + ' - pin ' + gpio.pin + ' - ' + gpio.direction"></strong>
+</p>
+<p>{{gpio.description}}</p>
+<h2 ng-show="gpio.direction == 'input' && ((gpio.rpi.mode == 'server' && utils.isRpiConnected(gpio.rpi)) || (gpio.rpi.mode == 'client' && utils.isUserConnected(user)))">
+	<button type="submit" class="btn btn-primary btn-lg btn-block" ng-click="initGpioInput(gpio)">Request pin input</button>
+</h2>
+<form>
+	<div class="form-group">
+		<div ng-show="gpio.direction == 'input' && (gpio.value >= 0 || gpio.value == '...')" class="gpioInput">
+			<div ng-bind="gpio.value"></div>
+		</div>
+		<div ng-show="gpio.direction == 'output' && ((gpio.rpi.mode == 'server' && utils.isRpiConnected(gpio.rpi)) || (gpio.rpi.mode == 'client' && utils.isUserConnected(user)))">
+			<label>Value</label>
+			<div><input class="form-control" type="text" ng-model="gpio.value" placeholder="Value"></div>
+			<br />
+			<button type="submit" class="btn btn-primary btn-lg btn-block" ng-click="gpioOutput(gpio)">Output to pin</button>
+		</div>
+	</div>
+</form>

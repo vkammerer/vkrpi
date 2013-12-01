@@ -1,0 +1,31 @@
+<div class="articleOptions">
+	<div hm-tap="utils.locationPath('rpi/create')" class="btn btn-default">
+		<span class="glyphicon glyphicon-plus"></span>
+		Add device
+	</div>
+</div>
+<h2>All devices</h2>
+
+<ul class="list-group">
+	<li ng-repeat="rpi in rpis" class="list-group-item clearfix">
+		<div ng-show="(user._id === rpi.user._id)" class="articleOptions">
+			<div hm-tap="utils.locationPath('rpi/{{rpi._id}}/edit')" class="btn btn-default">
+				<span class="glyphicon glyphicon-cog"></span>
+			</div>
+			<div hm-tap="deleteRpi(rpi)" class="btn btn-default">
+				<span class="glyphicon glyphicon-remove"></span>
+			</div>
+			<br/>
+			<br/>
+			<div hm-tap="utils.locationPath('rpi/{{rpi._id}}/show')" class="btn btn-block btn-primary">
+				<span>Details</span>
+			</div>
+		</div>
+		<p>
+			<strong>{{rpi.name}}</strong>
+		</p>
+		<div ng-show="rpi.mode == 'server'">Webserver {{rpi.host}}:{{rpi.port}}</div>
+		<div ng-show="rpi.mode == 'client'">Mode client</div>
+		<p>{{rpi.description}}</p>
+	</li>
+</ul>

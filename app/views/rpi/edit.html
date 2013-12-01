@@ -1,0 +1,44 @@
+<h2 ng-bind="rpi.name">Device</h2>
+<form>
+	<div class="form-group">
+		<label>Name</label>
+		<div>
+			<input class="form-control" type="text" ng-model="rpi.name" placeholder="Name"></div>
+	</div>
+	<div class="form-group">
+		<label>Description</label>
+		<div>
+			<textarea class="form-control" ng-model="rpi.description" placeholder="Description"></textarea>
+		</div>
+	</div>
+	<label>Mode</label>
+	<div class="radio">
+		<div>
+			<label><input type="radio" ng-model="rpi.mode" value="client">Client</label>
+		</div>
+		<div>
+			<label><input type="radio" ng-model="rpi.mode" value="server">Server</label>
+		</div>		
+	</div>
+	<div class="form-group" ng-show="rpi.mode == 'server'">
+		<label>Host</label>
+		<div>
+			<input class="form-control" type="text" ng-model="rpi.host" placeholder="Host">
+		</div>
+	</div>
+	<div class="form-group" ng-show="rpi.mode == 'server'">
+		<label>Port</label>
+		<div>
+			<input class="form-control" type="number" ng-model="rpi.port" placeholder="Port">
+		</div>
+	</div>
+	<div class="form-group" ng-show="rpi.mode == 'server'">
+		<label>Password</label>
+		<div>
+			<input class="form-control" type="text" ng-model="rpi.pwd" placeholder="Password">
+		</div>
+	</div>
+	<div class="form-group">
+		<button type="submit" class="btn btn-primary btn-lg btn-block" ng-click="updateRpi(rpi)">Update device</button>
+	</div>
+</form>

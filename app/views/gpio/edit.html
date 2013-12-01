@@ -1,0 +1,32 @@
+<h2 ng-bind="gpio.name">Pin</h2>
+<form>
+	<div class="form-group">
+		<label>Name</label>
+		<div>
+			<input class="form-control" type="text" ng-model="gpio.name" placeholder="Name"></div>
+	</div>
+	<div class="form-group">
+		<label>Description</label>
+		<div>
+			<textarea class="form-control" ng-model="gpio.description" placeholder="Description"></textarea>
+		</div>
+	</div>
+	<div class="form-group">
+		<label>Pin</label>
+		<div>
+			<input class="form-control" type="text" ng-model="gpio.pin" placeholder="Pin">
+		</div>
+	</div>
+	<label>Direction</label>
+	<div class="radio">
+		<div>
+			<label><input type="radio" ng-model="gpio.direction" value="input">Input</label>
+		</div>
+		<div>
+			<label><input type="radio" ng-model="gpio.direction" value="output">Output</label>
+		</div>		
+	</div>
+	<div class="form-group">
+		<button type="submit" class="btn btn-primary btn-lg btn-block" ng-click="updateGpio(gpio)">Update pin</button>
+	</div>
+</form>

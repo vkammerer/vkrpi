@@ -1,0 +1,5 @@
+<div ng-class="{alertcontainer:true, extended:extended}">
+	<div>
+		<alert ng-repeat="alert in alerts" type="alert.type" close="utils.closeAlert($index)" class="animate-vkalert">{{alert.msg}}</alert>
+	</div>
+</div>

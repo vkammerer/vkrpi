@@ -1,0 +1,41 @@
+<nav class="navbar navbar-default" role="navigation">
+	<div class="navbar-header">
+    <a class="navbar-brand" ng-click="utils.locationPath('')">
+    	<span>DC</span>
+    </a>
+  </div>
+  <div class="navbar-collapse navbar-ex1-collapse">
+		<ul class="nav navbar-nav" style="padding-left:35px;">
+			<li>
+				<a ng-show="user" ng-click="utils.locationPath('rpis')">Devices</a>
+	    </li>
+			<li>
+				<a ng-show="user" ng-click="utils.locationPath('gpios')">Pins</a>
+	    </li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+
+			<li ng-show="!user"><a hm-tap="utils.locationPath('user/signin')")>Sign in</a></li>
+			<li ng-show="!user"><a hm-tap="utils.locationPath('user/signup')">Sign up</a></li>
+
+			<li class="dropdown vkNavLogDetails">
+				<a class="dropdown-toggle" data-toggle="dropdown" ng-show="user">
+					{{user.name}}
+					<img ng-src="{{user.photo}}" ng-show="user && !(user.facebook || user.twitter || user.google)">
+					<img ng-src="{{user.facebook.photo}}" ng-show="user.facebook">
+					<img ng-src="{{user.twitter.profile_image_url}}" ng-show="user.twitter">
+					<img ng-src="{{user.google.picture}}" ng-show="user.google">
+					<b class="caret"></b>
+				</a>
+				<ul class="dropdown-menu" ng-show="user">
+					<li>
+						<a hm-tap="utils.locationPath('user/edit')">Settings</a>
+					</li>
+					<li>
+						<a hm-tap="logout()">Sign out</a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</nav>
