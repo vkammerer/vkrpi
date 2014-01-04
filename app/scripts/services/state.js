@@ -1,13 +1,13 @@
 'use strict';
 
 angular.module('vksetupApp')
-  .factory('state', function () {
+	.factory('state', function () {
 
-    var toReturn = {
-      isMobile : null,
-      isUserSignedinServer : null
-    };
+		var toReturn = {
+			isMobile : null,
+			isUserSignedinServer : null
+		};
 
-    return toReturn;
+		return toReturn;
 
-  });
+	});

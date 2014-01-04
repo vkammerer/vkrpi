@@ -1,0 +1,31 @@
+<div class="articleOptions">
+	<div hm-tap="utils.locationPath('rfcd/create')" class="btn btn-default">
+		<span class="glyphicon glyphicon-plus"></span>
+		Add RF Receiver
+	</div>
+</div>
+<h2>All RF Receivers</h2>
+
+<ul class="list-group">
+	<li ng-repeat="rfcd in rfcds" class="list-group-item clearfix">
+		<div ng-show="(user._id === rfcd.user._id)" class="articleOptions">
+			<div hm-tap="utils.locationPath('rfcd/{{rfcd._id}}/edit')" class="btn btn-default">
+				<span class="glyphicon glyphicon-cog"></span>
+			</div>
+			<div hm-tap="deleteRfcd(rfcd)" class="btn btn-default">
+				<span class="glyphicon glyphicon-remove"></span>
+			</div>
+			<br/>
+			<br/>
+			<div hm-tap="utils.locationPath('rfcd/{{rfcd._id}}/show')" class="btn btn-block btn-primary">
+				<span>Details</span>
+			</div>
+		</div>
+		<p>
+			<strong>{{rfcd.name}}</strong>
+		</p>
+		<div ng-show="rfcd.mode == 'server'">Webserver {{rfcd.host}}:{{rfcd.port}}</div>
+		<div ng-show="rfcd.mode == 'client'">Mode client</div>
+		<p>{{rfcd.description}}</p>
+	</li>
+</ul>

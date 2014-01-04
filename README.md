@@ -1,4 +1,4 @@
 vkrpi
 =====
 
-Remote communication with device GPIO from the web
+Remote communication with home devices from the web

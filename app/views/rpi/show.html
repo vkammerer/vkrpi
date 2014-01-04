@@ -3,7 +3,7 @@
 		<div hm-tap="utils.locationPath('rpi/' + rpi._id + '/edit')" class="btn btn-default">
 			<span class="glyphicon glyphicon-cog"></span>
 		</div>
-		<div hm-tap="deleteGpio(rpi)" class="btn btn-default">
+		<div hm-tap="deleteRpi(rpi)" class="btn btn-default">
 			<span class="glyphicon glyphicon-remove"></span>
 		</div>
 	</div>
@@ -31,6 +31,15 @@
 	<div ng-show="iutils.sRpiConnected(rpi)" class="btn btn-danger btn-lg btn-block" ng-click="disConnectRpi(rpi)">Disconnect from device</div>
 	<br />
 </form>
+<div class="clearfix">
+	<div class="articleOptions">
+		<div hm-tap="utils.locationPath('gpio/create')" class="btn btn-default">
+			<span class="glyphicon glyphicon-plus"></span>
+			Add pin
+		</div>
+	</div>
+	<h4>&nbsp;</h4>
+</div>
 <ul class="list-group">
 	<li ng-repeat="gpio in rpi.gpios" class="list-group-item">
 		<div ng-show="(user._id === rpi.user)" class="articleOptions">

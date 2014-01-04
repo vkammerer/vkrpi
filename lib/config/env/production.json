@@ -1,26 +1,26 @@
 {
-    "db": "mongodb://vkammerer:100582@paulo.mongohq.com:10003/vkrpi",
-    "app": {
-        "name": "MEAN - A Modern Stack - Production"
-    },
-    "facebook": {
-        "clientID": "356833467759082",
-        "clientSecret": "1299dbe8f9954bb3c2403effd3a1cac8",
-        "callbackURL": "http://vksetup.herokuapp.com/auth/facebook/callback"
-    },
-    "twitter": {
-        "clientID": "SF3RISh9cslNds3vonZZ4A",
-        "clientSecret": "fgrFgrlv79WlVC9q5C7QxS8JYj0EQ5v0YJxVRSyKWM",
-        "callbackURL": "http://vksetup.herokuapp.com/auth/twitter/callback"
-    },
-    "github": {
-        "clientID": "APP_ID",
-        "clientSecret": "APP_SECRET",
-        "callbackURL": "http://localhost:3000/auth/github/callback"
-    },
-    "google": {
-        "clientID": "684428499413-vgtq6uj3bntr7vmkql1hjvh4eabjnb2d.apps.googleusercontent.com",
-        "clientSecret": "x25kLA8OnywLiK-KDhpgikDT",
-        "callbackURL": "http://vksetup.herokuapp.com/auth/google/callback"
-    }
+	"db": "mongodb://vkammerer:100582@paulo.mongohq.com:10003/vkrpi",
+	"app": {
+		"name": "MEAN - A Modern Stack - Production"
+	},
+	"facebook": {
+		"clientID": "356833467759082",
+		"clientSecret": "1299dbe8f9954bb3c2403effd3a1cac8",
+		"callbackURL": "http://vksetup.herokuapp.com/auth/facebook/callback"
+	},
+	"twitter": {
+		"clientID": "SF3RISh9cslNds3vonZZ4A",
+		"clientSecret": "fgrFgrlv79WlVC9q5C7QxS8JYj0EQ5v0YJxVRSyKWM",
+		"callbackURL": "http://vksetup.herokuapp.com/auth/twitter/callback"
+	},
+	"github": {
+		"clientID": "APP_ID",
+		"clientSecret": "APP_SECRET",
+		"callbackURL": "http://localhost:3000/auth/github/callback"
+	},
+	"google": {
+		"clientID": "684428499413-vgtq6uj3bntr7vmkql1hjvh4eabjnb2d.apps.googleusercontent.com",
+		"clientSecret": "x25kLA8OnywLiK-KDhpgikDT",
+		"callbackURL": "http://vksetup.herokuapp.com/auth/google/callback"
+	}
 }

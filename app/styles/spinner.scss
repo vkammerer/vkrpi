@@ -28,6 +28,7 @@ $spinner_color : #445878;
 		box-shadow: 0 0 40px 0px rgba(0,0,0,0.2);
 		.spinner {
 			width:60px;
+			@include ui-spinner(#fff, 60px, $spinner_color, white, .7, 3s);
 			margin:0 auto;
 		}
 		.spinnerContent {
@@ -39,9 +40,6 @@ $spinner_color : #445878;
 
 .vkslow.spinnerShown .spinnerContainer {
 	display:block;
-		.spinner {
-			@include ui-spinner(#fff, 60px, $spinner_color, white, .7, 3s);
-		}
 }
 
 

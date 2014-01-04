@@ -1,0 +1,48 @@
+<div ng-show="(user._id === rfcd.user)" class="articleOptions clearfix">
+	<div style="padding-bottom:8px;">
+		<div hm-tap="utils.locationPath('rfcd/' + rfcd._id + '/edit')" class="btn btn-default">
+			<span class="glyphicon glyphicon-cog"></span>
+		</div>
+		<div hm-tap="deleteRfcd(rfcd)" class="btn btn-default">
+			<span class="glyphicon glyphicon-remove"></span>
+		</div>
+	</div>
+</div>
+<h2 ng-bind="rfcd.name">Device</h2>
+<p>
+	<span ng-show="rfcd.mode == 'client'">Mode client</span>
+	<span ng-show="rfcd.mode == 'server'" ng-bind="'Webserver ' + rfcd.host + ':' + rfcd.port"></span>
+</p>
+<p ng-bind="'ID: ' + rfcd._id"></p>
+<p>{{rfcd.description}}</p>
+<div style="clear:both"></div>
+<form ng-show="rfcd.mode == 'server'">
+	<div ng-show="!utils.isRpiConnected(rfcd)" class="btn btn-success btn-lg btn-block" ng-click="connectRpi(rfcd)">Connect to device</div>
+	<div ng-show="iutils.sRpiConnected(rfcd)" class="btn btn-danger btn-lg btn-block" ng-click="disConnectRpi(rfcd)">Disconnect from device</div>
+	<br />
+</form>
+<ul class="list-group">
+	<li ng-repeat="gpio in rfcd.gpios" class="list-group-item">
+		<div ng-show="(user._id === rfcd.user)" class="articleOptions">
+			<div hm-tap="utils.locationPath('gpio/{{gpio._id}}/edit')" class="btn btn-default">
+				<span class="glyphicon glyphicon-cog"></span>
+			</div>
+			<div hm-tap="deleteGpio(gpio)" class="btn btn-default">
+				<span class="glyphicon glyphicon-remove"></span>
+			</div>
+			<br/>
+			<br/>
+			<div hm-tap="utils.locationPath('gpio/{{gpio._id}}/show')" class="btn btn-primary btn-block">
+				<span>Details</span>
+			</div>
+		</div>
+		<p>
+			<strong>{{gpio.name}}</strong>
+		</p>
+		<p>
+			Pin {{gpio.pin}} - {{gpio.direction}}<br>
+			{{gpio.description}}
+		</p>
+		<div style="clear:both"></div>
+	</li>
+</ul>

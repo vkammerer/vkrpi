@@ -27,7 +27,7 @@ angular.module('vksetupApp')
 				},
 				response : function(response) {
 					checkResponse(response);
-		      return response || $q.when(response);
+					return response || $q.when(response);
 				},
 				responseError : function(response) {
 					checkResponse(response);
@@ -38,12 +38,12 @@ angular.module('vksetupApp')
 			var checkResponse = function(response) {
 				if (response.config.url.match(/api\//)) {
 					var responseTime = new Date().getTime() - $rootScope.apicalls[response.config.method][response.config.url];
-		      if (responseTime < $rootScope.constants.MIN_TIME_DISPLAY_SPINNER) {
-		        vkbody.removeClass('vkslow').addClass('vkfast')
-		      }
-		      else {
-		        vkbody.removeClass('vkfast').addClass('vkslow')
-		      }
+					if (responseTime < $rootScope.constants.MIN_TIME_DISPLAY_SPINNER) {
+						vkbody.removeClass('vkslow').addClass('vkfast')
+					}
+					else {
+						vkbody.removeClass('vkfast').addClass('vkslow')
+					}
 				}
 			}
 

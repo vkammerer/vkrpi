@@ -1,0 +1,29 @@
+<h2 ng-bind="rfcd.name">RF receiver</h2>
+<form>
+	<div class="form-group">
+		<label>Name</label>
+		<div>
+			<input class="form-control" type="text" ng-model="rfcd.name" placeholder="Name"></div>
+	</div>
+	<div class="form-group">
+		<label>Description</label>
+		<div>
+			<textarea class="form-control" ng-model="rfcd.description" placeholder="Description"></textarea>
+		</div>
+	</div>
+	<div class="form-group">
+		<label>On code</label>
+		<div>
+			<input class="form-control" type="text" ng-model="rfcd.oncode" placeholder="On code">
+		</div>
+	</div>
+	<div class="form-group">
+		<label>Off code</label>
+		<div>
+			<input class="form-control" type="text" ng-model="rfcd.offcode" placeholder="Off code">
+		</div>
+	</div>
+	<div class="form-group">
+		<button type="submit" class="btn btn-primary btn-lg btn-block" ng-click="updateRfcd(rfcd)">Update RF receiver</button>
+	</div>
+</form>

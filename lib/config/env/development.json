@@ -1,26 +1,26 @@
 {
-    "db": "mongodb://localhost/vkrpi",
-    "app": {
-        "name": "MEAN - A Modern Stack - Development"
-    },
-    "facebook": {
-        "clientID": "530187917068931",
-        "clientSecret": "3dab7b24e7a0dac2814ccd60d43325c2",
-        "callbackURL": "http://localhost:3000/auth/facebook/callback"
-    },
-    "twitter": {
-        "clientID": "yMqRvO2ZKGFcvFCVqnyDA",
-        "clientSecret": "pUfSSR5ZR3zrdATOdCbUzIcNJ9NeYwBXTO0mBquBTE",
-        "callbackURL": "http://localhost:3000/auth/twitter/callback"
-    },
-    "github": {
-        "clientID": "APP_ID",
-        "clientSecret": "APP_SECRET",
-        "callbackURL": "http://localhost:3000/auth/github/callback"
-    },
-    "google": {
-        "clientID": "684428499413-0q9ukm2rgl53pc3drd0isi274r65utj9.apps.googleusercontent.com",
-        "clientSecret": "ijqYtnUqAhSQyOL2ZrwZwdlx",
-        "callbackURL": "http://localhost:3000/auth/google/callback"
-    }
+	"db": "mongodb://localhost/vkrpi",
+	"app": {
+		"name": "MEAN - A Modern Stack - Development"
+	},
+	"facebook": {
+		"clientID": "530187917068931",
+		"clientSecret": "3dab7b24e7a0dac2814ccd60d43325c2",
+		"callbackURL": "http://localhost:3000/auth/facebook/callback"
+	},
+	"twitter": {
+		"clientID": "yMqRvO2ZKGFcvFCVqnyDA",
+		"clientSecret": "pUfSSR5ZR3zrdATOdCbUzIcNJ9NeYwBXTO0mBquBTE",
+		"callbackURL": "http://localhost:3000/auth/twitter/callback"
+	},
+	"github": {
+		"clientID": "APP_ID",
+		"clientSecret": "APP_SECRET",
+		"callbackURL": "http://localhost:3000/auth/github/callback"
+	},
+	"google": {
+		"clientID": "684428499413-0q9ukm2rgl53pc3drd0isi274r65utj9.apps.googleusercontent.com",
+		"clientSecret": "ijqYtnUqAhSQyOL2ZrwZwdlx",
+		"callbackURL": "http://localhost:3000/auth/google/callback"
+	}
 }
