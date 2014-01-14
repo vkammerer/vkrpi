@@ -14,7 +14,7 @@ angular.module('vksetupApp')
 					else {
 						vkbody.removeClass('spinnerShown');
 					}
-				})
+				});
 			},
 			link: function(scope, element, attrs) {
 			}

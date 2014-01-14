@@ -12,10 +12,11 @@ angular.module('vksetupApp')
 			var userFactory = $resource(
 				userUrl,
 				{userId:'@id'},
-				{ "update": {method:"PUT"}
+				{ 'update': {method:'PUT'}
 			});
 			return userFactory;
-	}]);
+		}
+	]);
 
 angular.module('vksetupApp')
 	.factory('UserStatus', [
@@ -33,12 +34,12 @@ angular.module('vksetupApp')
 					.success(function(user){
 						$rootScope.user = user;
 						$rootScope.state.isUserSignedinServer = true;
-						defer.resolve(user);
+						defer.resolve({reason:'loggedIn'});
 					})
 					.error(function(){
 						delete $rootScope.user;
 						$rootScope.state.isUserSignedinServer = false;
-						defer.reject('Not logged in');
+						defer.reject({reason:'notLoggedIn'});
 					});
 				return defer.promise;
 			};
@@ -50,20 +51,20 @@ angular.module('vksetupApp')
 					},function(rejection){
 						defer.resolve(rejection);
 					}
-				)
+				);
 				return defer.promise;
 			};
 			var isUserSignedinLocal = function(){
-				if (!($rootScope.state.isUserSignedinServer)) {
+				if ($rootScope.state.isUserSignedinServer === null) {
 					return isUserSignedinServer();
 				}
 				else {
 					var defer = $q.defer();
 					if ($rootScope.user && $rootScope.user !== 'null') {
-						defer.resolve('Already logged in');
+						defer.resolve({reason:'loggedIn'});
 					}
 					else {
-						defer.reject('Not logged in');
+						defer.reject({reason:'notLoggedIn'});
 					}
 					return defer.promise;
 				}
@@ -76,7 +77,7 @@ angular.module('vksetupApp')
 					},function(){
 						defer.resolve();
 					}
-				)
+				);
 				return defer.promise;
 			};
 			return {
@@ -85,7 +86,8 @@ angular.module('vksetupApp')
 				isUserSignedinLocal : isUserSignedinLocal,
 				isUserSignedoutLocal : isUserSignedoutLocal
 			};
-	}]);
+		}
+	]);
 
 angular.module('vksetupApp')
 	.service('UserStatusInterceptor', [
@@ -100,25 +102,27 @@ angular.module('vksetupApp')
 			return {
 				responseError: function(rejection) {
 					if (
-						rejection.config.url !== $rootScope.constants.API_URL + '/users/session'
-						&& rejection.config.url !== $rootScope.constants.API_URL + '/users/me'
-						&& rejection.config.url !== $rootScope.constants.API_URL + '/users'
-						&& rejection.config.url !== $rootScope.constants.API_URL + '/gpios'
-						&& rejection.config.url !== $rootScope.constants.API_URL + '/rpis'
+						rejection.config.url !== $rootScope.constants.API_URL + '/users/session' &&
+						rejection.config.url !== $rootScope.constants.API_URL + '/users/me' &&
+						rejection.config.url !== $rootScope.constants.API_URL + '/users' &&
+						rejection.config.url !== $rootScope.constants.API_URL + '/gpios' &&
+						rejection.config.url !== $rootScope.constants.API_URL + '/rfcds' &&
+						rejection.config.url !== $rootScope.constants.API_URL + '/rpis'
 					){
 						$injector.get('UserStatus').isUserSignedinServer().then(
 							function(user){
 								$rootScope.user = user;
-								var alertData = { type: 'danger', msg: 'Your are not allowed you to do this'};
+								var alertData = { type: 'danger', msg: 'Your are not allowed to access this page'};
 								$rootScope.alerts.push(alertData);
 							},function(){
 								delete $rootScope.user;
-								var alertData = { type: 'danger', msg: 'You must be signed in to do this'};
+								var alertData = { type: 'danger', msg: 'You need to sign in to access this page'};
 								$rootScope.alerts.push(alertData);
 							}
-							)
+						);
 					}
 					return $q.reject(rejection);
 				}
-			}
-	}]);
+			};
+		}
+	]);

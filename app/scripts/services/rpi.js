@@ -13,7 +13,8 @@ angular.module('vksetupApp')
 			var rpiFactory = $resource(
 				rpiUrl,
 				{rpiId:'@id'},
-				{ "update": {method:"PUT"}
+				{ 'update': {method:'PUT'}
 			});
 			return rpiFactory;
-	}]);
+		}
+	]);

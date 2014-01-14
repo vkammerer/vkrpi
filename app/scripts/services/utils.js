@@ -33,10 +33,14 @@ angular.module('vksetupApp')
 					$rootScope.alerts.splice(index, 1);
 				},
 				isUserConnected : function(user){
-					if (user && window.VK_APP.sockets[user._id]) return window.VK_APP.sockets[user._id].socket.connected;
+					if (user && window.VK_APP.sockets[user._id]) {
+						return window.VK_APP.sockets[user._id].socket.connected;
+					}
 				},
 				isRpiConnected : function(rpi){
-					if (rpi && window.VK_APP.sockets[rpi._id]) return window.VK_APP.sockets[rpi._id].socket.connected;
+					if (rpi && window.VK_APP.sockets[rpi._id]) {
+						return window.VK_APP.sockets[rpi._id].socket.connected;
+					}
 				}
 			};
 			toReturn.rootScope = {
@@ -46,12 +50,10 @@ angular.module('vksetupApp')
 				closeAlert : toReturn.closeAlert,
 				isUserConnected : toReturn.isUserConnected,
 				isRpiConnected : toReturn.isRpiConnected
-			}
-
-
+			};
 			return toReturn;
-
-	}]);
+		}
+	]);
 
 angular.module('vksetupApp')
 	.filter('filterByParamId', function() {
@@ -59,12 +61,12 @@ angular.module('vksetupApp')
 			var toReturn = [];
 			var i=0, len=input.length;
 			for (; i<len; i++) {
-				if (input[i][param]._id == id) {
+				if (input[i][param]._id === id) {
 					toReturn.push(input[i]);
 				}
 			}
 			return toReturn;
-		}
+		};
 	});
 
 angular.module('vksetupApp')
@@ -72,10 +74,10 @@ angular.module('vksetupApp')
 		return function(input, id) {
 			var i=0, len=input.length;
 			for (; i<len; i++) {
-				if (input[i]._id == id) {
+				if (input[i]._id === id) {
 					return input[i];
 				}
 			}
 			return null;
-		}
+		};
 	});

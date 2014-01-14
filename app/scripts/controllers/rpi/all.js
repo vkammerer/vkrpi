@@ -16,7 +16,7 @@ angular.module('vksetupApp')
 			$rootScope.navigationpath = ['home','rpis'];
 
 			var queryRpis = function(){
-				$rootScope.spinner = 'Loading rpis';
+				$rootScope.spinner = 'Loading devices';
 				Rpi.query(function(data){
 					$scope.rpis = data;
 					delete $rootScope.spinner;

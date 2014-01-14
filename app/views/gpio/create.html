@@ -6,7 +6,7 @@
 			<select class="form-control" ng-model="gpio.rpi" placeholder="Name">
 				<option ng-repeat="rpi in rpis" value="{{rpi._id}}">{{rpi.name}} - {{rpi.host}}:{{rpi.port}}</option>
 			</select>
-	</div>
+		</div>
 	</div>
 	<div class="form-group">
 		<label>Name</label>
@@ -32,10 +32,10 @@
 		</div>
 		<div>
 			<label><input type="radio" ng-model="gpio.direction" value="output">Output</label>
-		</div>		
+		</div>
 		<div>
 			<label><input type="radio" ng-model="gpio.direction" value="rftransmitter">RF Transmitter</label>
-		</div>		
+		</div>
 	</div>
 	<div class="form-group">
 		<button type="submit" class="btn btn-primary btn-lg btn-block" ng-click="addGpio(gpio)">Add pin</button>

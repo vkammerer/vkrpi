@@ -13,30 +13,30 @@ angular.module('vksetupApp')
 				return $injector.get('UserStatus').isUserSignedoutLocal();
 			};
 			$routeProvider
-				.when('/gpios', {
-					templateUrl: 'views/gpio/all.html',
-					controller: 'GpioListCtrl',
+				.when('/rfcds', {
+					templateUrl: 'views/rfcd/all.html',
+					controller: 'RfcdListCtrl',
 					resolve : {
 						condition : isUserSignedinLocal
 					}
 				})
-				.when('/gpio/create', {
-					templateUrl: 'views/gpio/create.html',
-					controller: 'GpioCreateCtrl',
+				.when('/rfcd/create', {
+					templateUrl: 'views/rfcd/create.html',
+					controller: 'RfcdCreateCtrl',
 					resolve : {
 						condition : isUserSignedinLocal
 					}
 				})
-				.when('/gpio/:gpioId/show', {
-					templateUrl: 'views/gpio/show.html',
-					controller: 'GpioShowCtrl',
+				.when('/rfcd/:rfcdId/show', {
+					templateUrl: 'views/rfcd/show.html',
+					controller: 'RfcdShowCtrl',
 					resolve : {
 						condition : isUserSignedinLocal
 					}
 				})
-				.when('/gpio/:gpioId/edit', {
-					templateUrl: 'views/gpio/edit.html',
-					controller: 'GpioEditCtrl',
+				.when('/rfcd/:rfcdId/edit', {
+					templateUrl: 'views/rfcd/edit.html',
+					controller: 'RfcdEditCtrl',
 					resolve : {
 						condition : isUserSignedinLocal
 					}

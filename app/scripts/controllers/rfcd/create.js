@@ -1,31 +1,39 @@
 'use strict';
 
 angular.module('vksetupApp')
-	.controller('RpiCreateCtrl', [
-		'Rpi',
+	.controller('RfcdCreateCtrl', [
+		'Rfcd',
+		'Gpio',
 		'$scope',
 		'$rootScope',
 		'$location',
 		'utils',
 		function (
-			Rpi,
+			Rfcd,
+			Gpio,
 			$scope,
 			$rootScope,
 			$location,
 			utils
 		){
 
-			$rootScope.navigationpath = ['home','rpis','create'];
+			$rootScope.navigationpath = ['home','rfcds','create'];
 
-			$scope.addRpi = function(rpi){
-				$rootScope.spinner = 'Creating device';
-				var thisRpi = new Rpi(rpi);
-				thisRpi.$save(
+			$rootScope.spinner = 'Loading pins';
+			Gpio.query(function(data){
+				delete $rootScope.spinner;
+				$scope.gpios = data;
+			});
+
+			$scope.addRfcd = function(rfcd){
+				$rootScope.spinner = 'Creating RF receiver';
+				var thisRfcd = new Rfcd(rfcd);
+				thisRfcd.$save(
 					function(data){
 						delete $rootScope.spinner;
-						var alertData = { type: 'success', msg: 'Device successfully created' };
+						var alertData = { type: 'success', msg: 'RF receiver successfully created' };
 						$rootScope.alerts.push(alertData);
-						$scope.rpi = {};
+						$scope.rfcd = {};
 					},
 					function(response){
 						var data = response.data;

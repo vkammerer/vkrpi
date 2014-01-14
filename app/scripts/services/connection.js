@@ -14,9 +14,7 @@ angular.module('vksetupApp')
 				POST: {},
 				PUT: {},
 				DELETE: {}
-			}
-
-			var vkbody = angular.element(document.querySelector('body'));
+			};
 
 			var toReturn =  {
 				request: function(config) {
@@ -33,20 +31,23 @@ angular.module('vksetupApp')
 					checkResponse(response);
 					return $q.reject(response);
 				}
-			}
+			};
+
+			var vkbody = angular.element(document.querySelector('body'));
 
 			var checkResponse = function(response) {
 				if (response.config.url.match(/api\//)) {
 					var responseTime = new Date().getTime() - $rootScope.apicalls[response.config.method][response.config.url];
 					if (responseTime < $rootScope.constants.MIN_TIME_DISPLAY_SPINNER) {
-						vkbody.removeClass('vkslow').addClass('vkfast')
+						vkbody.removeClass('vkslow').addClass('vkfast');
 					}
 					else {
-						vkbody.removeClass('vkfast').addClass('vkslow')
+						vkbody.removeClass('vkfast').addClass('vkslow');
 					}
 				}
-			}
+			};
 
 			return toReturn;
 
-	}]);
+		}
+	]);

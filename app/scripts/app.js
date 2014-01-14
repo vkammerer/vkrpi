@@ -50,8 +50,7 @@ angular.module('vksetupApp', [
 				resolve : {
 					condition : isUserSignedinLocal
 				}
-			})
-			.otherwise({redirectTo: '/'});
+			});
 	}
 ])
 .run([

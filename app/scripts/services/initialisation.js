@@ -3,14 +3,10 @@
 angular.module('vksetupApp')
 	.factory('initialisation', [
 		'$rootScope',
-		'$location',
 		'$route',
-		'utils',
 		function(
 			$rootScope,
-			$location,
-			$route,
-			utils
+			$route
 		){
 
 			var toReturn = {
@@ -27,24 +23,28 @@ angular.module('vksetupApp')
 							$rootScope.state.isMobile = isLastMobile;
 							$route.reload();
 						}
-					}
+					};
 					$rootScope.state.isMobile = isMobile();
 					window.onresize = reloadOnIsMobile;
 				},
 				initRedirectionListener : function(){
-					$rootScope.$on("$routeChangeError", function (event, nextLocation, currentLocation, rejection) {
+					$rootScope.$on('$routeChangeError', function (event, nextLocation, currentLocation, rejection) {
+						var errorMessage;
 
-						var errorMessage = !rejection ? 'No access to this page' : 'No access to this page: ' + rejection;
+						if (rejection.reason === 'notLoggedIn') {
+							errorMessage = 'You need to sign in to access "' + nextLocation.$$route.originalPath + '"';
+						}
+						else if (rejection.reason === 'loggedIn') {
+							errorMessage = 'You need to sign out to access "' + nextLocation.$$route.originalPath + '"';
+						}
+						else {
+							errorMessage = 'You currently cannot access "' + nextLocation.$$route.originalPath + '"';
+						}
 						var alertData = { type: 'danger', msg: errorMessage};
 						$rootScope.alerts.push(alertData);
-
-						if(currentLocation && currentLocation.$$route && currentLocation.$$route.originalPath) {
-							$location.path(currentLocation.$$route.originalPath)
-						}
-					})
+					});
 				}
-			}
-
+			};
 			return toReturn;
-
-	}]);
+		}
+	]);

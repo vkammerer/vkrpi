@@ -12,7 +12,8 @@ angular.module('vksetupApp')
 			var gpioFactory = $resource(
 				gpioUrl,
 				{gpioId:'@id'},
-				{ "update": {method:"PUT"}
+				{ 'update': {method:'PUT'}
 			});
 			return gpioFactory;
-	}]);
+		}
+	]);

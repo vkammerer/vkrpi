@@ -16,7 +16,7 @@ angular.module('vksetupApp')
 			$rootScope.navigationpath = ['home','gpios'];
 
 			var queryGpios = function(){
-				$rootScope.spinner = 'Loading gpios';
+				$rootScope.spinner = 'Loading pins';
 				Gpio.query(function(data){
 					delete $rootScope.spinner;
 					$scope.gpios = data;
