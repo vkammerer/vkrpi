@@ -19,7 +19,7 @@ angular.module('vksetupApp')
 			$rootScope.navigationpath = ['home','rfcds'];
 
 			if (rfcdId) {
-				$rootScope.spinner = 'Loading rfcd';
+				$rootScope.spinner = 'Loading RF receiver';
 				Rfcd.get({rfcdId:rfcdId}, function(rfcd){
 					delete $rootScope.spinner;
 					$scope.rfcd = rfcd;
@@ -32,7 +32,7 @@ angular.module('vksetupApp')
 			}
 
 			$scope.updateRfcd = function(rfcd){
-				$rootScope.spinner = 'Updating rfcd';
+				$rootScope.spinner = 'Updating RF receiver';
 				var thisRfcd = new Rfcd(rfcd);
 				thisRfcd.$update({rfcdId:rfcd._id}, function(data){
 						delete $rootScope.spinner;

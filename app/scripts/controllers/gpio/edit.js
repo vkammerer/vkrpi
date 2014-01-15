@@ -18,7 +18,7 @@ angular.module('vksetupApp')
 			var gpioId = $routeParams.gpioId || "";
 
 			if (gpioId) {
-				$rootScope.spinner = 'Loading gpio';
+				$rootScope.spinner = 'Loading pin';
 				Gpio.get({gpioId:gpioId}, function(gpio){
 					delete $rootScope.spinner;
 					$scope.gpio = gpio;
@@ -36,7 +36,7 @@ angular.module('vksetupApp')
 				})
 			}
 			$scope.updateGpio = function(gpio){
-				$rootScope.spinner = 'Updating gpio';
+				$rootScope.spinner = 'Updating pin';
 				var thisGpio = new Gpio(gpio);
 				thisGpio.$update({gpioId:gpio._id}, function(data){
 						delete $rootScope.spinner;

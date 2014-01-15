@@ -16,7 +16,7 @@ angular.module('vksetupApp')
 			$rootScope.navigationpath = ['home','rfcds'];
 
 			var queryRfcds = function(){
-				$rootScope.spinner = 'Loading RF receiver';
+				$rootScope.spinner = 'Loading RF receivers';
 				Rfcd.query(function(data){
 					$scope.rfcds = data;
 					delete $rootScope.spinner;

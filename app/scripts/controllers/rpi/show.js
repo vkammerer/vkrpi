@@ -22,7 +22,7 @@ angular.module('vksetupApp')
 
 
 			var queryRpi = function(rpiId){
-				$rootScope.spinner = 'Loading rpi';
+				$rootScope.spinner = 'Loading device';
 				Rpi.get({rpiId:rpiId}, function(rpi){
 					delete $rootScope.spinner;
 					$scope.rpi = rpi;

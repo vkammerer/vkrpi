@@ -13,14 +13,13 @@
 	<span ng-show="rfcd.mode == 'client'">Mode client</span>
 	<span ng-show="rfcd.mode == 'server'" ng-bind="'Webserver ' + rfcd.host + ':' + rfcd.port"></span>
 </p>
-<p ng-bind="'ID: ' + rfcd._id"></p>
 <p>{{rfcd.description}}</p>
 <div style="clear:both"></div>
 <form>
 	<div class="form-group">
-		<div ng-show="((rfcd.gpio.rpi.mode == 'server' && utils.isRpiConnected(rfcd.gpio.rpi)) || (rfcd.gpio.rpi.mode == 'client' && utils.isUserConnected(user)))">
-			<button type="submit" class="btn btn-primary btn-lg btn-block" ng-click="rfcdOutput(rfcd, 'on')">Turn on RF receiver</button>
-			<button type="submit" class="btn btn-primary btn-lg btn-block" ng-click="rfcdOutput(rfcd, 'off')">Turn off RF receiver</button>
+		<div ng-show="((rfcd.gpio.rpi.mode == 'server' && utils.isRpiConnected(rfcd.gpio.rpi)) || (rfcd.gpio.rpi.mode == 'client' && utils.isUserConnected(user)))" class="btn-group btn-group-justified">
+			<div type="submit" class="btn btn-success btn-lg" ng-click="rfcdOutput(rfcd, 'on')">On</div>
+			<div type="submit" class="btn btn-danger btn-lg" ng-click="rfcdOutput(rfcd, 'off')">Off</div>
 		</div>
 	</div>
 </form>

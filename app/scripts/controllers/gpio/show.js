@@ -19,7 +19,7 @@ angular.module('vksetupApp')
 			var gpioSocket;
 
 			var queryGpio = function(gpioId){
-				$rootScope.spinner = 'Loading gpio';
+				$rootScope.spinner = 'Loading pin';
 				Gpio.get({gpioId:gpioId}, function(gpio){
 					delete $rootScope.spinner;
 
@@ -54,15 +54,6 @@ angular.module('vksetupApp')
 			};
 
 			$scope.gpioOutput = function(gpio){
-/*
-				gpioSocket.emit('powerSwitchOutput', {
-					rpi:gpio.rpi._id,
-					value:gpio.value,
-					pin:gpio.pin,
-					powerSwitchMessage : "323 969 323 969 323 969 969 323 323 969 969 323 323 969 969 323 323 969 323 969 323 969 969 323 323 969 969 323 323 969 969 323 323 969 969 323 323 969 969 323 323 969 969 323 323 969 969 323 323 10982"
-				})
-*/
-
 				gpioSocket.emit('gpioOutput', {
 					rpi:gpio.rpi._id,
 					value:gpio.value,

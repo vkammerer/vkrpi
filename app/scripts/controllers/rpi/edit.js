@@ -19,7 +19,7 @@ angular.module('vksetupApp')
 			$rootScope.navigationpath = ['home','rpis'];
 
 			if (rpiId) {
-				$rootScope.spinner = 'Loading rpi';
+				$rootScope.spinner = 'Loading device';
 				Rpi.get({rpiId:rpiId}, function(rpi){
 					delete $rootScope.spinner;
 					$scope.rpi = rpi;
@@ -31,7 +31,7 @@ angular.module('vksetupApp')
 				})
 			}
 			$scope.updateRpi = function(rpi){
-				$rootScope.spinner = 'Updating rpi';
+				$rootScope.spinner = 'Updating device';
 				var thisRpi = new Rpi(rpi);
 				thisRpi.$update({rpiId:rpi._id}, function(data){
 						delete $rootScope.spinner;

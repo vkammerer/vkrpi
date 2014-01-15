@@ -21,7 +21,7 @@ angular.module('vksetupApp')
 			var rfcdSocket;
 
 			var queryRfcd = function(rfcdId){
-				$rootScope.spinner = 'Loading rfcd';
+				$rootScope.spinner = 'Loading RF receiver';
 				Rfcd.get({rfcdId:rfcdId}, function(rfcd){
 					delete $rootScope.spinner;
 					$scope.rfcd = rfcd;
@@ -40,7 +40,7 @@ angular.module('vksetupApp')
 			}
 
 			$scope.deleteRfcd = function(rfcd){
-				if (window.confirm('Delete device?')) {
+				if (window.confirm('Delete RF receiver?')) {
 					Rfcd.delete({rfcdId: rfcd._id}, function(){
 						$location.path('/rfcds');
 					});
