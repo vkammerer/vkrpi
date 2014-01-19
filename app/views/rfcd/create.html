@@ -4,7 +4,7 @@
 		<label>Pin</label>
 		<div>
 			<select class="form-control" ng-model="rfcd.gpio" placeholder="Name">
-				<option ng-repeat="gpio in gpios | filter:{direction:'rftransmitter'}" value="{{gpio._id}}">{{gpio.name}} - {{gpio.pin}}</option>
+				<option ng-repeat="gpio in gpios | filter:{direction:'rftransmitter'}" value="{{gpio._id}}">{{gpio.rpi.name}} - {{gpio.name}} - pin {{gpio.pin}}</option>
 			</select>
 		</div>
 	</div>

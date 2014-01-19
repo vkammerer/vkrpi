@@ -1,0 +1,86 @@
+<h2>Add task</h2>
+<form>
+	<div class="form-group">
+		<label>Name</label>
+		<div>
+			<input class="form-control" type="text" ng-model="task.name" placeholder="Name"></div>
+	</div>
+	<div class="form-group">
+		<label>Description</label>
+		<div>
+			<textarea class="form-control" ng-model="task.description" placeholder="Description"></textarea>
+		</div>
+	</div>
+	<div class="clearfix">
+		<div class="articleOptions">
+			<div class="btn-group">
+			  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+			    Add action <span class="caret"></span>
+			  </button>
+			  <ul class="dropdown-menu pull-right" role="menu">
+			    <li><a hm-tap="addAction('gpio')">Pin output</a></li>
+			    <li><a hm-tap="addAction('rfcd')">RF receiver</a></li>
+			    <li><a hm-tap="addAction('delay')">Delay</a></li>
+			  </ul>
+			</div>
+		</div>
+		<h4>Actions</h4>
+	</div>
+	<ul class="list-group">
+		<li ng-repeat="action in task.actions" class="list-group-item clearfix">
+			<div class="articleOptions">
+				<div hm-tap="deleteAction($index)" class="btn btn-default">
+					<span class="glyphicon glyphicon-remove"></span>
+				</div>
+			</div>
+			<div ng-if="action.gpio">
+				<div class="form-group">
+					<label>Pin</label>
+					<div>
+						<select class="form-control" ng-model="action.gpio.gpio" placeholder="Name">
+							<option ng-repeat="gpio in gpios | filter:{direction:'output'}" value="{{gpio._id}}">{{gpio.rpi.name}} - {{gpio.name}} - pin {{gpio.pin}}</option>
+						</select>
+					</div>
+				</div>
+				<div class="radio">
+					<div>
+						<label><input type="radio" ng-model="action.gpio.status" value="high">High</label>
+					</div>
+					<div>
+						<label><input type="radio" ng-model="action.gpio.status" value="low">Low</label>
+					</div>
+				</div>
+			</div>
+
+			<div ng-if="action.rfcd">
+				<div class="form-group">
+					<label>RF receiver</label>
+					<div>
+						<select class="form-control" ng-model="action.rfcd.rfcd" placeholder="Name">
+							<option ng-repeat="rfcd in rfcds" value="{{rfcd._id}}">{{rfcd.name}}</option>
+						</select>
+					</div>
+				</div>
+				<div class="radio">
+					<div>
+						<label><input type="radio" ng-model="action.rfcd.status" value="on">On</label>
+					</div>
+					<div>
+						<label><input type="radio" ng-model="action.rfcd.status" value="off">Off</label>
+					</div>
+				</div>
+			</div>
+			<div ng-if="action.delay">
+				<div class="form-group">
+					<label>Delay</label>
+					<div>
+						<input class="form-control" type="number" ng-model="action.delay.length" placeholder="Delay (in ms)"></div>
+				</div>
+			</div>
+
+		</li>
+	</ul>
+	<div class="form-group">
+		<button type="submit" class="btn btn-primary btn-lg btn-block" ng-click="addTask(task)">Add task</button>
+	</div>
+</form>

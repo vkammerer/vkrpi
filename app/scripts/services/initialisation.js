@@ -9,6 +9,33 @@ angular.module('vksetupApp')
 			$route
 		){
 
+			var connectServer = function(user){
+				if (window.VK_APP.sockets[user._id] && !window.VK_APP.sockets[user._id].socket.connected) {
+					window.VK_APP.sockets[user._id].socket.reconnect();
+				}
+				else {
+					window.VK_APP.sockets[user._id] = window.io.connect($rootScope.constants.ROOT_URL, {
+						'resource' : 'usersocket',
+						'query': 'user=' + $rootScope.user._id,
+						'force new connection': true
+					});
+					window.VK_APP.sockets[user._id].on('connect', function (socket, args) {
+						$rootScope.$apply();
+					});
+					window.VK_APP.sockets[user._id].on('disconnect', function (socket, args) {
+						$rootScope.$apply();
+					});
+				}
+			};
+
+			var disConnectServer = function(){
+				setTimeout(function(){
+					for (var i in window.VK_APP.sockets) {
+						window.VK_APP.sockets[i].disconnect();
+					}
+				}, 0);
+			};
+
 			var toReturn = {
 				removeLoader : function (){
 					angular.element(document.getElementById('siteloader')).remove();
@@ -42,6 +69,16 @@ angular.module('vksetupApp')
 						}
 						var alertData = { type: 'danger', msg: errorMessage};
 						$rootScope.alerts.push(alertData);
+					});
+				},
+				initSocketManager : function(){
+					$rootScope.$watch('user', function(user) {
+						if (user) {
+							connectServer(user);
+						}
+						else {
+							disConnectServer();
+						}
 					});
 				}
 			};

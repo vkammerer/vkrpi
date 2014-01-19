@@ -107,6 +107,7 @@ angular.module('vksetupApp')
 						rejection.config.url !== $rootScope.constants.API_URL + '/users' &&
 						rejection.config.url !== $rootScope.constants.API_URL + '/gpios' &&
 						rejection.config.url !== $rootScope.constants.API_URL + '/rfcds' &&
+						rejection.config.url !== $rootScope.constants.API_URL + '/tasks' &&
 						rejection.config.url !== $rootScope.constants.API_URL + '/rpis'
 					){
 						$injector.get('UserStatus').isUserSignedinServer().then(

@@ -1,9 +1,14 @@
+@import "sass-bootstrap/lib/variables";
 
 #vkContainer {
 	backface-visibility:hidden;
 	-webkit-backface-visibility:hidden; /* Chrome and Safari */
 	-moz-backface-visibility:hidden; /* Firefox */
-	-ms-backface-visibility:hidden; 	
+	-ms-backface-visibility:hidden;
+}
+
+@media (max-width: $screen-sm) {
+	@import "snapjs/snap";
 }
 
 
@@ -20,9 +25,5 @@ layoutmobile .container {
 	-webkit-overflow-scrolling: touch;
 	box-sizing:border-box;
 	padding-top:52px;
-	margin-left:-1px;
-	margin-right:-1px;
 	background:white;
-	border-right:1px solid #333;
-	border-left:1px solid #333;
 }

@@ -2,7 +2,6 @@ $iconSpritePath: "../images/glyphicons-halflings.png";
 $iconWhiteSpritePath: "../images/glyphicons-halflings-white.png";
 
 @import "sass-bootstrap/lib/bootstrap";
-@import "snapjs/snap";
 @import "font-awesome/scss/font-awesome";
 
 @import "layout";
@@ -16,7 +15,7 @@ $iconWhiteSpritePath: "../images/glyphicons-halflings-white.png";
 
 button .glyphicon {
 	top:2px;
-	margin:0 10px;	
+	margin:0 10px;
 }
 
 

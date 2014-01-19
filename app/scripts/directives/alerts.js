@@ -20,6 +20,8 @@ angular.module('vksetupApp')
 						scope.extended = isAlertsNotEmpty;
 						var difference = $rootScope.alerts.length - scope.alertLength;
 						if (isAlertsNotEmpty) {
+							window.scrollTo(0,0);
+							document.querySelector('.snap-content > div').scrollTop = 0;
 							$timeout(function(){
 								$rootScope.alerts.splice(0,difference);
 							}, 5000);

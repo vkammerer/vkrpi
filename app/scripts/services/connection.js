@@ -9,7 +9,7 @@ angular.module('vksetupApp')
 			$rootScope
 		){
 
-			$rootScope.apicalls = {
+			$rootScope.apicalls = $rootScope.apicalls || {
 				GET: {},
 				POST: {},
 				PUT: {},

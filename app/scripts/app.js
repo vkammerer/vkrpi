@@ -81,6 +81,7 @@ angular.module('vksetupApp', [
 		initialisation.removeLoader();
 		initialisation.initRedirectionListener();
 		initialisation.initIsMobileReloadOnWindowResize();
+		initialisation.initSocketManager();
 		UserStatus.isUserSignedinLocal();
 
 	}

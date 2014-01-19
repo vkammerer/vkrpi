@@ -39,6 +39,20 @@ angular.module('vksetupApp')
 							}
 						}
 					},
+					tasks : {
+						name : 'Tasks',
+						url : '/#/tasks',
+						children : {
+							create : {
+								name : 'Add task',
+								url : '/#/rfcd/create'
+							},
+							edit : {
+								name : 'Task',
+								url : ''
+							}
+						}
+					},
 					gpios : {
 						name : 'Pins',
 						url : '/#/gpios',
