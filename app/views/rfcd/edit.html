@@ -1,10 +1,10 @@
 <h2 ng-bind="rfcd.name">RF receiver</h2>
 <form>
 	<div class="form-group">
-		<label>Pin</label>
+		<label>Transmitting device</label>
 		<div>
-			<select class="form-control" ng-model="rfcd.gpio" placeholder="Name">
-				<option ng-repeat="gpio in gpios | filter:{direction:'rftransmitter'}" value="{{gpio._id}}" ng-selected="rfcd.gpio._id == gpio._id">{{gpio.rpi.name}} - {{gpio.name}} - pin {{gpio.pin}}</option>
+			<select class="form-control" ng-model="rfcd.rpi" placeholder="Name">
+				<option ng-repeat="rpi in rpis" value="{{rpi._id}}" ng-selected="rfcd.rpi._id == rpi._id">{{rpi.name}}</option>
 			</select>
 		</div>
 	</div>

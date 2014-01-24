@@ -70,9 +70,7 @@ angular.module('vksetupApp')
 				}
 				else if (actions[actionIndex].rfcd) {
 					var thisRfcd = angular.extend({}, $filter('getById')($scope.rfcds, actions[actionIndex].rfcd.rfcd));
-					thisRfcd.gpio = $filter('getById')($scope.gpios, thisRfcd.gpio);
-					console.log(thisRfcd);
-					var rfcdSocket = (thisRfcd.gpio.rpi.mode == 'client') ? window.VK_APP.sockets[thisRfcd.gpio.rpi.user] : window.VK_APP.sockets[thisRfcd.gpio.rpi._id];
+					var rfcdSocket = (thisRfcd.rpi.mode == 'client') ? window.VK_APP.sockets[thisRfcd.rpi.user] : window.VK_APP.sockets[thisRfcd.rpi._id];
 					rfcdSocket.emit('rfcdOutput', {
 						rfcd:thisRfcd,
 						status:actions[actionIndex].rfcd.status
@@ -80,9 +78,7 @@ angular.module('vksetupApp')
 					thisDefer.resolve();
 				}
 				thisDefer.promise.then(function(){
-					console.log(actionIndex);
 					if(actions[actionIndex + 1]) {
-						console.log(actions[actionIndex + 1]);
 						runAction(actions, actionIndex + 1);
 					}
 				})

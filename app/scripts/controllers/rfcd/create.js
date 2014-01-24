@@ -3,14 +3,14 @@
 angular.module('vksetupApp')
 	.controller('RfcdCreateCtrl', [
 		'Rfcd',
-		'Gpio',
+		'Rpi',
 		'$scope',
 		'$rootScope',
 		'$location',
 		'utils',
 		function (
 			Rfcd,
-			Gpio,
+			Rpi,
 			$scope,
 			$rootScope,
 			$location,
@@ -20,9 +20,9 @@ angular.module('vksetupApp')
 			$rootScope.navigationpath = ['home','rfcds','create'];
 
 			$rootScope.spinner = 'Loading pins';
-			Gpio.query(function(data){
+			Rpi.query(function(data){
 				delete $rootScope.spinner;
-				$scope.gpios = data;
+				$scope.rpis = data;
 			});
 
 			$scope.addRfcd = function(rfcd){

@@ -48,7 +48,8 @@ angular.module('vksetupApp')
 						var isLastMobile = isMobile();
 						if ($rootScope.state.isMobile !== isLastMobile) {
 							$rootScope.state.isMobile = isLastMobile;
-							$route.reload();
+							console.log($rootScope.$$watchers.length);
+							$rootScope.$digest();
 						}
 					};
 					$rootScope.state.isMobile = isMobile();

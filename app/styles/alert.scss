@@ -1,35 +1,67 @@
 
 @import "sass-bootstrap/lib/variables";
 
-.alertcontainer,
-.alertcontainer.extended,
-.animate-vkalert.ng-enter,
-.animate-vkalert.ng-leave,
-.animate-vkalert.ng-move {
-	-webkit-transition:all linear 300ms;
-	-moz-transition:all linear 300ms;
-	-o-transition:all linear 300ms;
-	transition:all linear 300ms;
+
+.vkalertcontainer.vkextended {
 }
 
-.animate-vkalert {
-	margin-top: 15px;
+.vkalert {
+		margin-bottom:10px;
 }
-.animate-vkalert.ng-enter, .animate-vkalert.ng-leave.ng-leave-active {
-	opacity:0;
+.vkalert.ng-enter {
+	animation-duration: 600ms;
+  animation-name: slidein;
 }
-.animate-vkalert, .animate-vkalert.ng-enter.ng-enter-active, .animate-vkalert.ng-leave {
-	opacity:1;
+.vkalert.ng-leave {
+	animation-duration: 600ms;
+  animation-name: slideout;
+}
+@media (max-width: $screen-sm) {
 }
 @media (min-width: $screen-sm) {
-	.animate-vkalert.ng-enter, .animate-vkalert.ng-leave.ng-leave-active {
-		line-height:0;
-		padding: 0 15px;
-		margin-top: 0;
+	.vkalert.ng-enter, .vkalert.ng-leave.ng-leave-active {
 	}
-	.animate-vkalert, .animate-vkalert.ng-enter.ng-enter-active, .animate-vkalert.ng-leave {
-		margin-top: 15px;
+	.vkalert, .vkalert.ng-enter.ng-enter-active, .vkalert.ng-leave {
+	}
+}
+@keyframes slidein {
+  0% {
+    transform: translateX(-150%);
+		line-height:0;
+		padding: 0;
+		margin-bottom:0;
+  }
+
+  50% {
+    transform: translateX(-150%);
 		line-height:1.42857;
 		padding: 15px;
-	}
+		margin-bottom:10px;
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes slideout {
+  0% {
+    transform: translateX(0%);
+		line-height:1.42857;
+		padding: 15px;
+		margin-bottom:10px;
+  }
+
+  50% {
+    transform: translateX(150%);
+		line-height:1.42857;
+		padding: 15px;
+		margin-bottom:10px;
+  }
+
+  100% {
+    transform: translateX(150%);
+		line-height:0;
+		padding: 0;
+		margin-bottom:0;
+  }
 }

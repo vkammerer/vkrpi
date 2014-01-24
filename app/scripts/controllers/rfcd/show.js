@@ -26,13 +26,14 @@ angular.module('vksetupApp')
 					delete $rootScope.spinner;
 					$scope.rfcd = rfcd;
 
-					rfcdSocket = (rfcd.gpio.rpi.mode == 'client') ? window.VK_APP.sockets[rfcd.gpio.rpi.user] : window.VK_APP.sockets[rfcd.gpio.rpi._id];
-
 					$rootScope.navigationpath = ['home','rfcds',{
 						ref : 'show',
 						name : rfcd.name,
 						url: ''
 					}];
+
+					rfcdSocket = (rfcd.rpi.mode == 'client') ? window.VK_APP.sockets[rfcd.rpi.user] : window.VK_APP.sockets[rfcd.rpi._id];
+
 				})
 			}
 			if (rfcdId) {
@@ -51,7 +52,7 @@ angular.module('vksetupApp')
 				rfcdSocket.emit('rfcdOutput', {
 					rfcd:rfcd,
 					status:status
-				})
+				});
 			};
 
 			$scope.disConnectRfcd = function(rfcd){

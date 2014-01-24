@@ -29,9 +29,6 @@ angular.module('vksetupApp')
 					$rootScope.spinner = 'Redirecting you to ' + name;
 					$window.location.replace(href);
 				},
-				closeAlert : function(index){
-					$rootScope.alerts.splice(index, 1);
-				},
 				isUserConnected : function(user){
 					if (user && window.VK_APP.sockets[user._id]) {
 						return window.VK_APP.sockets[user._id].socket.connected;

@@ -7,7 +7,7 @@
 <h2>All devices</h2>
 
 <ul class="list-group">
-	<li ng-repeat="rpi in rpis" class="list-group-item clearfix">
+	<li ng-repeat="rpi in rpis | orderBy:'name'" class="list-group-item clearfix">
 		<div ng-show="(user._id === rpi.user._id)" class="articleOptions">
 			<div hm-tap="utils.locationPath('rpi/{{rpi._id}}/edit')" class="btn btn-default">
 				<span class="glyphicon glyphicon-cog"></span>

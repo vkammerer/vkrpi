@@ -7,7 +7,7 @@
 <h2>All RF Receivers</h2>
 
 <ul class="list-group">
-	<li ng-repeat="rfcd in rfcds" class="list-group-item clearfix">
+	<li ng-repeat="rfcd in rfcds | orderBy:'name'" class="list-group-item clearfix">
 		<div ng-show="(user._id === rfcd.user._id)" class="articleOptions">
 			<div hm-tap="utils.locationPath('rfcd/{{rfcd._id}}/edit')" class="btn btn-default">
 				<span class="glyphicon glyphicon-cog"></span>

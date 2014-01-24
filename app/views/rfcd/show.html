@@ -17,10 +17,9 @@
 <div style="clear:both"></div>
 <form>
 	<div class="form-group">
-		<div ng-show="((rfcd.gpio.rpi.mode == 'server' && utils.isRpiConnected(rfcd.gpio.rpi)) || (rfcd.gpio.rpi.mode == 'client' && utils.isUserConnected(user)))" class="btn-group btn-group-justified">
+		<div ng-show="((rfcd.rpi.mode == 'server' && utils.isRpiConnected(rfcd.rpi)) || (rfcd.rpi.mode == 'client' && utils.isUserConnected(user)))" class="btn-group btn-group-justified">
 			<div type="submit" class="btn btn-success btn-lg" ng-click="rfcdOutput(rfcd, 'on')">On</div>
 			<div type="submit" class="btn btn-danger btn-lg" ng-click="rfcdOutput(rfcd, 'off')">Off</div>
 		</div>
 	</div>
 </form>
-

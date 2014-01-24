@@ -6,6 +6,10 @@
 			</div>
 			<a hm-tap="utils.locationPath('')" class="list-group-item" ng-class="{active:utils.getLocationPath() == '/'}">Home</a>
 			<div ng-show="user" style="clear:both">
+					<a hm-tap="utils.locationPath('tasks')" class="list-group-item" ng-class="{active:utils.getLocationPath() == '/tasks'}">Tasks</a>
+			</div>
+			<h5 class="centeredH dark"><span>Settings</span></h5>
+			<div ng-show="user" style="clear:both">
 					<a hm-tap="utils.locationPath('rpis')" class="list-group-item" ng-class="{active:utils.getLocationPath() == '/rpis'}">Devices</a>
 					<a hm-tap="utils.locationPath('gpios')" class="list-group-item" ng-class="{active:utils.getLocationPath() == '/gpios'}">Pins</a>
 					<a hm-tap="utils.locationPath('rfcds')" class="list-group-item" ng-class="{active:utils.getLocationPath() == '/rfcds'}">RF receivers</a>

@@ -3,7 +3,7 @@
 angular.module('vksetupApp')
 	.controller('RfcdEditCtrl', [
 		'Rfcd',
-		'Gpio',
+		'Rpi',
 		'$scope',
 		'$rootScope',
 		'$routeParams',
@@ -11,7 +11,7 @@ angular.module('vksetupApp')
 		'utils',
 		function (
 			Rfcd,
-			Gpio,
+			Rpi,
 			$scope,
 			$rootScope,
 			$routeParams,
@@ -24,10 +24,10 @@ angular.module('vksetupApp')
 
 			$rootScope.spinner = 'Loading pins and RF receiver';
 
-			var gpiosDefer = $q.defer();
+			var rpisDefer = $q.defer();
 
-			Gpio.query(function(data){
-				gpiosDefer.resolve(data);
+			Rpi.query(function(data){
+				rpisDefer.resolve(data);
 			});
 
 			var rfcdDefer = $q.defer();
@@ -44,16 +44,16 @@ angular.module('vksetupApp')
 				})
 			}
 
-			$q.all([gpiosDefer.promise, rfcdDefer.promise]).then(function(results){
+			$q.all([rpisDefer.promise, rfcdDefer.promise]).then(function(results){
 				$scope.rfcd = results[1];
-				$scope.gpios = results[0];
+				$scope.rpis = results[0];
 				delete $rootScope.spinner;
 			})
 
 			$scope.updateRfcd = function(rfcd){
 				$rootScope.spinner = 'Updating RF receiver';
-				if (typeof(rfcd.gpio) === 'object') {
-					rfcd.gpio = rfcd.gpio._id
+				if (typeof(rfcd.rpi) === 'object') {
+					rfcd.rpi = rfcd.rpi._id
 				}
 				var thisRfcd = new Rfcd(rfcd);
 				thisRfcd.$update({rfcdId:rfcd._id}, function(data){

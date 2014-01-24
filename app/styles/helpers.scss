@@ -9,8 +9,7 @@
 	transition-timing-function: linear, linear;
 	-webkit-overflow-scrolling: touch;
 }
-.centeredH4 {
-	margin-top:1.5em;
+.centeredH {
 	text-align:center;
 	position:relative;
 	&:before {
@@ -28,6 +27,16 @@
 		background:white;
 		display:inline-block;
 		padding:0 5px;
+	}
+	&.dark {
+		color:#999;
+		&:before {
+			background:#666;
+		}
+		> span {
+			background:#222;
+		}
+
 	}
 
 }

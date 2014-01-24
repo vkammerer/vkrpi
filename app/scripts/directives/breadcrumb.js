@@ -13,9 +13,13 @@ angular.module('vksetupApp')
 				restrict: 'E',
 				controller : function($scope){
 					$rootScope.breadcrumb = [];
-					$rootScope.$watch('navigationpath', function(){
+					var thisWatch = $rootScope.$watch('navigationpath', function(){
 						generateBreadcrumb(architecture);
 					});
+
+					$scope.$on('$destroy', function() {
+						thisWatch();
+			    });
 
 					var generateBreadcrumb = function(navpath) {
 

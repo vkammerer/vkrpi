@@ -16,10 +16,6 @@ angular.module('vksetupApp')
 				controller : function($scope){
 				},
 				link: function(scope, element, attrs) {
-					$rootScope.$watch('user', function(){
-					});
-					$rootScope.$on("$routeChangeSuccess", function (event, nextLocation, currentLocation, rejection) {
-					});
 					scope.logout = function () {
 						$http.get($rootScope.constants.API_URL + '/users/signout')
 							.success(function(data){
